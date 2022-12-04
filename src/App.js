@@ -1,25 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
-import { addTodo } from "./store/todoSlise";
-
+import { Routes, Route } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import Home from "./components/Home";
+import SignIn from "./components/SignIn";
+import  './App.css'
 function App() {
-  const [text, setText] = useState("");
-  const dispaht = useDispatch();
-  
-  function onSumitHandler() {
-    // e.preventDefault();
-    if (text.trim().length) {
-      dispaht(addTodo({ text }));
-      setText("");
-    }
-  }
   return (
-    <div>
-      <TodoForm onSumitHandler={onSumitHandler} text={text} setText={setText} />
-      <TodoList/>
+    <div >
+     <div>
+     <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Home" element={<Home />} />
+      </Routes>
+     </div>
     </div>
+
   );
 }
 
